@@ -1,0 +1,36 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+defaultTasks 'clean', 'check'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+    test {
+        java {
+            srcDir 'test'
+        }
+    }
+}
+
+repositories {
+    maven {
+        url 'http://localhost:8081/nexus/content/repositories/central/'
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.8.1'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '1.8.5'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.1'
+}
+
+tasks.eclipse.dependsOn(cleanEclipse)
+eclipse.jdt {
+    sourceCompatibility = 1.6
+    targetCompatibility = 1.5
+}
