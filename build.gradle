@@ -35,3 +35,5 @@ eclipse.jdt {
     sourceCompatibility = 1.6
     targetCompatibility = 1.5
 }
+
+idea.project.jdkName = '1.6'
